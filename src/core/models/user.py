@@ -1,4 +1,4 @@
-from src.core.models import db
+from src.core.extensions.sql_alchemy_extension import db
 
 
 class User(db.Model):
