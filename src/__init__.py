@@ -3,8 +3,7 @@ from flask import Flask
 from src.views.user import user_auth_view_api
 from src.api.user_auth_api import user_auth_apis
 from src.config.config import Config
-from src.core.extensions.sql_alchemy_extension import db
-from src.core.extensions.jwt_extension import jwt
+from src.core.extensions import db, jwt, limiter
 
 
 def create_app():
@@ -15,6 +14,7 @@ def create_app():
 
     db.init_app(app)
     jwt.init_app(app)
+    limiter.init_app(app)
 
     with app.app_context():
         db.create_all()
